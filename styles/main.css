@@ -22,7 +22,6 @@ a {
 }
 
 body main#main legend.title img {
-    height: 50px;
     float: left;
 }
 
@@ -37,7 +36,6 @@ body main#main legend.title h1 {
     padding-bottom: 5px;
     overflow: hidden;
     white-space: nowrap;
-    margin: 0 auto 40px;
     letter-spacing: .12em;
 }
 
@@ -47,10 +45,6 @@ body main#main .result {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-body main#main .search #search-joke {
-    width: 50%;
 }
 
 body main#main .search #search-joke .buttons {
@@ -80,13 +74,13 @@ body main#main button:hover {
 }
 
 body main#main .result .joke#random-joke {
+    background-position: center;
     background-image: url('../images/random-joke-bg.jpg');
     height: 600px;
     width: 100%;
     background-size: 600px auto;
     background-repeat: no-repeat;
     background-color: #FFF;
-    background-position: center;
     display: flex;
     justify-content: center;
 }
@@ -112,7 +106,6 @@ body .black-screen {
 body.default-mode main#main {
     margin: 0 auto;
     height: 100%;
-    width: 90%;
     display: flex;
     align-items: center;
     align-content: center;
@@ -127,7 +120,6 @@ body.default-mode main#main .result .joke#search-result {
 body.default-mode main#main .result .joke#random-joke #random-joke-box {
     width: 190px;
     height: 170px;
-    margin-left: 290px;
     margin-top: 90px;
     position: relative;
     text-align: center;
@@ -149,7 +141,6 @@ body.default-mode main#main #search-joke input#search-box {
 body.search-result-mode main#main button {
     padding: 5px 10px;
     font-size: 14px;
-    margin: 20px;
     width: max-content;
 }
 
@@ -164,9 +155,7 @@ body.search-result-mode::-webkit-scrollbar-thumb {
 }
 
 body.search-result-mode main#main .search {
-    padding-left: 60px;
     position: fixed;
-    flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     box-shadow: 0px 5px 15px -5px rgba(0,0,0,0.5);
@@ -174,6 +163,8 @@ body.search-result-mode main#main .search {
     -moz-box-shadow: 0px 5px 15px -5px rgba(0,0,0,0.5);
     background-color: #FFF;
     z-index: 2;
+    display: flex;
+    align-items: center;
 }
 
 body.search-result-mode main#main legend.title {
@@ -190,17 +181,11 @@ body.search-result-mode main#main legend.title h1 {
     display: none;
 }
 
-body.search-result-mode main#main .search #search-joke {
-    display: flex;
-    align-items: center;
-}
-
 body.search-result-mode main#main .result .joke#random-joke {
     display: none;
 }
 
 body.search-result-mode main#main .result .joke#search-result {
-    padding-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,7 +195,6 @@ body.search-result-mode main#main .joke li {
     list-style: none;
     padding: 15px 0 10px;
     line-height: 1.6;
-    border-bottom: 1px solid #939393;
     width: 95%;
     font-size: 20px;
 }
@@ -248,13 +232,47 @@ body.search-result-mode main#main #search-joke input#search-box {
 *
 */
 @media screen and (min-width: 768px) {
-
+    
+    body.default-mode main#main {
+        width: 90%;
+    }
+    
+    body main#main legend.title img {
+        height: 50px;
+    }
+    
+    body main#main .search #search-joke {
+        width: 50%;
+    }
+    
     body.default-mode main#main legend.title h1{
         font-size: 50px;
+        margin: 0 auto 40px;
     }
-
+    
     body.default-mode main#main #search-joke button {
         font-size: 17px;
+    }
+    
+    body main#main .result .joke#random-joke {
+        background-position: center;
+    }
+    
+    body.default-mode main#main .result .joke#random-joke #random-joke-box {
+        margin-left: 290px;
+    }
+    
+    body.search-result-mode main#main .search {
+        padding-left: 60px;
+        flex-direction: row;
+    }
+    
+    body.search-result-mode main#main button {
+        margin: 20px;
+    }
+    
+    body.search-result-mode main#main .result .joke#search-result {
+        padding-top: 80px;
     }
 }
 
@@ -264,12 +282,51 @@ body.search-result-mode main#main #search-joke input#search-box {
 *
 */
 @media screen and (max-width: 767px) {
-
-    body.default-mode main#main legend.title h1{
-        font-size: 40px;
+    
+    body main#main {
+        width: 100%;
     }
-
-    body.default-mode main#main #search-joke button {
+    
+    body main#main legend.title img {
+        height: 27px;
+    }
+    
+    body main#main .search #search-joke {
+        width: 85%;
+        margin-top: 10px;
+    }
+    
+    body main#main .result .joke#random-joke {
+        background-position: right;
+    }
+    
+    body.default-mode main#main .search {
+        margin-top: 10px;
+    }
+    
+    body.default-mode main#main legend.title h1{
+        font-size: 27px;
+        margin: 0 10px;
+    }
+    
+    body.default-mode main#main button {
         font-size: 14px;
+    }
+    
+    body.default-mode main#main .result .joke#random-joke #random-joke-box {
+        margin-left: 115px;
+    }
+    
+    body.search-result-mode main#main .search {
+        padding-left: 10px;
+        flex-direction: column;
+    }
+    
+    body.search-result-mode main#main button {
+        margin: 10px;
+    }
+    
+    body.search-result-mode main#main .result .joke#search-result {
+        padding-top: 130px;
     }
 }
