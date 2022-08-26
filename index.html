@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chuck Norris Quote</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="styles/normalize.css" />
+    <link rel="icon" href="images/icons/chuck-icon.png" />
+</head>
+
+<body class="default-mode">
+    <main id="main">
+        <legend class="title">
+            <img src="images/icons/chuck-icon.png" alt="Draw of Chuck Norris" />
+            <h1>CHUCK NORRIS QUOTE!</h1>
+        </legend>
+        <div class="search">
+            <div id="search-joke">
+                <input type="text" id="search-box" name="search-box" placeholder="Search For an Quote" />
+                <div class="buttons">
+                    <button onclick="getSearchResult()" id="search-button" value="Search">Search</button>
+                    <button onclick="getLucky()" id="get-lucky-joke" value="I'm The Lucky">I'm The Lucky</button>
+                </div>
+            </div>
+            <button onclick="getRandomJoke()" id="new-random-joke" value="Random Joke">Random Quote</button>
+        </div>
+        <div class="result">
+            <div class="joke" id="random-joke">
+                <div id="random-joke-box">
+                    <span id="random-joke-result"></span>
+                </div>
+            </div>
+            <div class="joke" id="search-result"></div>
+        </div>
+    </main>
+    <div class="black-screen" id="loading-screen" style="display: none;">
+        <img src="images/loading.webp" alt="Loading Screen with a gif of Chuck Norris" />
+    </div>
+</body>
+
+</html>
