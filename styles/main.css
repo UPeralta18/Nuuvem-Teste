@@ -23,6 +23,7 @@ a {
 
 body main#main legend.title img {
     float: left;
+    cursor: pointer;
 }
 
 body main#main .error-message {
@@ -243,6 +244,7 @@ body.search-result-mode main#main #search-joke input#search-box {
     
     body main#main .search #search-joke {
         width: 50%;
+        margin-top: 10px;
     }
     
     body.default-mode main#main legend.title h1{
@@ -272,7 +274,7 @@ body.search-result-mode main#main #search-joke input#search-box {
     }
     
     body.search-result-mode main#main .result .joke#search-result {
-        padding-top: 80px;
+        padding-top: 100px;
     }
 }
 

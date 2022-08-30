@@ -1,12 +1,10 @@
-# Test Frontend 1
+## RUNNING
 
-The idea with this test is to allow us to better comprehend the skills of candidates to developer jobs, in various experience levels.
+To run the test, just open the index.html
 
-This test should be completed by you on your own, in your own time. Take as much time as you need, but usually this test shouldn't take more than a couple of hours to be done.
+## TESTS
 
-## Delivery instructions
-
-Download the instructions and example input file from this repo and, once done, put all project files in a .zip file and send it to your contact at Nuuvem.
+To test the application, I used the Rainforest QA platform. This was an E2E test and the results are in tests folder. The file 'actions.png' shows all the user's actions tested.
 
 ## Project description
 
@@ -43,20 +41,3 @@ Your project MUST:
 1. Be simple to configure and execute, running on a Unix-compatible environment (Linux or macOS)
 1. Be well tested, with a good test coverage and using both unit and functional / integration / end-to-end automated tests.
 1. Use only free / open-source languages and libraries
-
-## Review
-
-Your project will be evaluated by the following criteria:
-
-1. Does the project fulfill the basic requirements?
-1. Did you document how to configure, build or run the project?
-1. Did you follow closely the project specification?
-1. Quality of the user experience, in terms of usability, accessibility and overall visual presentation;
-1. Quality of the code itself, how it's strutured and how it complies with good, modern practices;
-1. Quality and coverage of unit / funcional / automated tests;
-1. Familiarity with the standard libraries of the languages used and other packages;
-
-## Reference
-
-This test was inspired by this other test: <https://github.com/GuiaBolso/seja-um-guia-front>.
-# Nuuvem-Teste

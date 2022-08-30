@@ -1,9 +1,36 @@
 var url = `https://api.chucknorris.io/jokes`;
+var searchResults = new Array();
+var resultStart = 0;
+var resultEnd = 9;
 
 document.addEventListener('DOMContentLoaded', function() {
     let searchBox = document.getElementById(`search-box`);
     searchBox.focus();
 }, false);
+
+// The Scroll Event.
+window.addEventListener('scroll',function(){
+    let scrollHeight = document.documentElement.scrollHeight;
+    let scrollTop = document.documentElement.scrollTop;
+    let clientHeight = document.documentElement.clientHeight;
+    
+    if( (scrollTop + clientHeight) > (scrollHeight - 5)){
+        setTimeout(addResults(searchResults.slice(resultStart, resultEnd)), 1000);
+    }
+});
+
+function backToDefaultMode() {
+    let searchResultBox = document.getElementById('search-result');
+    let jokeBoxText = document.getElementById(`random-joke-result`);
+    let searchBox = document.getElementById(`search-box`);
+
+    searchBox.value = ``;
+    searchBox.focus();
+    searchResultBox.innerHTML = ``;
+    jokeBoxText.style.fontSize = '25px';
+    jokeBoxText.innerHTML = ``;
+    changeClass('default-mode');
+}
 
 function getRandomJoke() {
     let newUrl = `${url}/random`;
@@ -38,7 +65,11 @@ function search(terms) {
             return response.json();
         }).then(function (data) {
             let jokes = data.result;
-            resolve(jokes);
+            if(jokes.length != 0) {
+                resolve(jokes);
+            } else {
+                resolve(false);
+            }
         }).catch(function (err) {
             reject(err);
         });
@@ -54,26 +85,44 @@ function getErrorMessage() {
         termsBox.classList.remove('error-message');
         termsBox.disabled = false;
         termsBox.value = '';
-    }, 3000);
+    }, 1500);
 }
 
 function getSearchResult() {
-    let terms = document.getElementById('search-box').value
-    let jokeBox = document.getElementById(`search-result`);
+    let terms = document.getElementById('search-box').value;
     if (terms) {
         terms = terms.toLowerCase();
         search(terms).then(function (jokes){
+            let searchResultBox = document.getElementById('search-result');
+            searchResultBox.innerHTML = ``;
+            searchResults = [];
+            resultStart = 0;
+            resultEnd = 9;
             changeClass('search-result-mode');
-            jokeBox.innerHTML = ``;
-            jokes.map(function (joke) {
-                jokeBox.innerHTML += `<li>
-                                        <a href='${joke.url}' target='_blank'>${joke.value}</a>
-                                    </li>`;
-            });
+            if(jokes) {
+                jokes.map(function (joke) {
+                    searchResults.push(joke);
+                });
+                addResults(searchResults.slice(resultStart, resultEnd));
+            } else {
+                searchResultBox.innerHTML = `<h1>Chuck Norris says no such thing</h1>`;
+            }
         });
     } else {
         getErrorMessage();
     }
+}
+
+function addResults(jokes) {
+    let searchResultBox = document.getElementById('search-result');
+    jokes.map(function (joke) {
+        searchResultBox.innerHTML += `<li>
+        <a href='${joke.url}' target='_blank'>${joke.value}</a>
+        </li>`;
+    });
+    
+    resultStart += 10;
+    resultEnd += 10;
 }
 
 function getLucky() {
@@ -95,7 +144,7 @@ function getLucky() {
 
 function changeClass(className) {
     let body = document.querySelector('body');
-
+    
     if (!body.classList.contains(className)) {
         let loadingScreen = document.getElementById('loading-screen');
         loadingScreen.style.display = 'flex';
